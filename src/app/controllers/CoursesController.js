@@ -64,6 +64,13 @@ class CoursesController {
             .catch(next)
     }
 
+    //[POST] /courses/handle-form-actions
+    handleFormActions(req, res, next) {
+        Course.delete( {_id: { $in: req.body.courseIds }})
+        .then(() => res.redirect('/me/stored/courses'))
+        .catch(next)
+    }
+
 }
 
 module.exports = new CoursesController();
