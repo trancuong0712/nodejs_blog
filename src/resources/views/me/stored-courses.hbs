@@ -7,7 +7,7 @@
           <a href="/me/trash/courses">Thùng rác ({{deletedCount}})</a>
         </div>
         <div>
-          <button type="button" class="btn btn-danger" id="multi-delete-btn">Xóa</button>
+          <button type="button" class="btn btn-danger" id="multi-delete-btn" disabled="disabled">Xóa</button>
         </div>
       </div>
       <div class="row">
@@ -36,7 +36,7 @@
                               <a class="btn btn-link" href="/courses/{{this._id}}/edit" role="button">Sửa</a>
                           </td>
                           <td>
-                              <a class="btn btn-link" href="/courses/delete" role="button" data-toggle="modal" data-target="#modal-delete" data-id="{{this._id}}">Xóa</a>
+                              <button class="btn btn-link" href="/courses/delete" role="button" data-toggle="modal" data-target="#modal-delete" data-id="{{this._id}}">Xóa</button>
                           </td>
                       </tr>
                   {{else}}
@@ -106,11 +106,13 @@
         checkBox.click(function () {
           const totalCheckedBox = $('.checkbox:checkbox:checked').length;
           const totalBox = $('.checkbox:checkbox').length;
+          multiDeleteBtn.attr('disabled', totalCheckedBox <= 0)
           checkAllCheckbox.prop( "checked", totalCheckedBox === totalBox );
         })
 
         checkAllCheckbox.click(function () {
           checkBox.prop( "checked", checkAllCheckbox.prop("checked"))
+          multiDeleteBtn.attr('disabled', !checkAllCheckbox.prop("checked"))
         })
 
         multiDeleteBtn.click(function () {
