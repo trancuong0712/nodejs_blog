@@ -18,8 +18,15 @@
                       <input type="checkbox" id="check-all" data-id={{this._id}}>
                     </th>
                     <th scope="col">#</th>
-                    <th scope="col">Tên khóa Học</th>
-                    <th scope="col">Mô tả</th>
+                    <th scope="col">
+                      Tên khóa Học
+                      {{{sortable 'name' _sort}}}
+                    
+                    </th>
+                    <th scope="col">
+                      Mô tả
+                      {{{sortable 'description' _sort}}}
+                    </th>
                     <th scope="col" colspan="2" class="text-center">Action</th>
                   </tr>
               </thead>
